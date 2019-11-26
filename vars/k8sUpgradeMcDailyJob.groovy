@@ -14,6 +14,7 @@ def call(project, namespace, rabbithost) {
     --set mongo.Url=${MONGO_URL},rabbit.Host=${rabbithost} \
     --set oaApi.authToken=${API_AUTH_TOKEN} \
     --set schedule.Hour=23,schedule.Minute=35 \
-    --set oaApi.Url="https://oaapi-stag.sjmex.io""""
+    --set oaApi.Url="https://oaapi-stag.sjmex.io"
+    """
   }
 }
