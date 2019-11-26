@@ -1,27 +1,22 @@
  def call(image, sudo = true) {
-    tagBeta = "${currentBuild.displayName}-${env.BRANCH_NAME}"
+    tag = "${currentBuild.displayName}"
     prefix = ""
     if (sudo) {
         prefix = "sudo "
     }
     sh """${prefix}docker pull \
-        ${image}:${tagBeta}"""
+        ${image}:${tag}"""
     sh """${prefix}docker image tag \
-        ${image}:${tagBeta} \
-        ${image}:${currentBuild.displayName}"""
-    sh """${prefix}docker image tag \
-        ${image}:${tagBeta} \
-        ${image}:latest"""
+        ${image}:${tag} \
+        ${image}:latest-stag"""
     withCredentials([usernamePassword(
         credentialsId: "docker",
         usernameVariable: "USER",
         passwordVariable: "PASS"
     )]) {
         sh """${prefix}docker login \
-        -u $USER -p $PASS"""
+        -u $USER -p $PASS https://hub.sjmex.io"""
     }
     sh """${prefix}docker image push \
-        ${image}:${currentBuild.displayName}"""
-    sh """${prefix}docker image push \
-        ${image}:latest"""
+        ${image}:latest-stag"""
  }
