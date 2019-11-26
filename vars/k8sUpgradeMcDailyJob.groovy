@@ -9,7 +9,7 @@ def call(project, namespace, rabbithost) {
       variable: 'MONGO_URL'
     )
   ]) {
-    sh """helm upgrade ${project} helm/${project} \
+    sh """helm upgrade ${project} helm/mc-daily-job \
     -i -n ${namespace} --set image.tag=${env.TAG} \
     --set mongo.Url=${MONGO_URL},rabbit.Host=${rabbithost} \
     --set oaApi.authToken=${API_AUTH_TOKEN} \
