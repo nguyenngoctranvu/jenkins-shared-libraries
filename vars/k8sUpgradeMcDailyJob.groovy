@@ -10,7 +10,7 @@ def call(project, namespace, rabbithost) {
     )
   ]) {
     sh """helm upgrade ${project} helm/mc-daily-job \
-    -i -n ${namespace} --set image.tag=${env.TAG} \
+    -i -n ${namespace} --set image.tag=${currentBuild.displayName} \
     --set mongo.Url=${MONGO_URL},rabbit.Host=${rabbithost} \
     --set oaApi.authToken=${API_AUTH_TOKEN} \
     --set schedule.Hour=23,schedule.Minute=35 --dry-run --debug"""
