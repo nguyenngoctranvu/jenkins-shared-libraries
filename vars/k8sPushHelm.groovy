@@ -8,6 +8,6 @@ def call(project, chartVersion, museumAddr) {
         if (chartVersion == "") {
             packageName = sh(returnStdout: true, script: "ls ${project}*").trim()
         }
-        sh """curl -u $USER:$PASS --data-binary "@${packageName}" http://${museumAddr}/api/charts"""
+        sh """curl -u $USER:$PASS --data-binary "@${packageName}" https://${museumAddr}/api/charts"""
     }
 }
