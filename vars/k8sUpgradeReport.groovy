@@ -1,4 +1,4 @@
-def call(project, namespace, apiurl, bucket) {
+def call(project, namespace, apiurl, bucket, reportsvr) {
   withCredentials([
     string(
       credentialsId: 'oaApi.authToken',
@@ -24,7 +24,9 @@ def call(project, namespace, apiurl, bucket) {
     --set oaApi.Url=${apiurl} \
     --set bucket.Name=${bucket} \
     --set bucket.Key=${S3_KEY} \
-    --set bucket.Secret=${S3_SECRET} --dry-run --debug
+    --set bucket.Secret=${S3_SECRET} 
+    --set report.Server=${reportsvr} \
+    --dry-run --debug
     """
   }
 }
