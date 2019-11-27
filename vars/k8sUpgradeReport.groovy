@@ -9,7 +9,7 @@ def call(project, namespace, apiurl, bucket) {
       variable: 'MONGO_URL'
     )
   ]) {
-    sh """helm upgrade ${project} helm/mc-daily-job \
+    sh """helm upgrade ${project} helm/reportingjob \
     -i -n ${namespace} --set image.tag=${currentBuild.displayName} \
     --set mongo.Url=${MONGO_URL} \
     --set oaApi.authToken=${API_AUTH_TOKEN} \
