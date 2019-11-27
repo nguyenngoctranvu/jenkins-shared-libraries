@@ -10,7 +10,7 @@ def call(project, namespace,apiUrl, dbUrl) {
         --set ingress.host=${apiUrl} \
         --set db.address="${dbUrl}" \
         --set db.user=${USER} \
-        --set db.password=${PASS} --dry-run --debug
+        --set db.password=${PASS}
         """
     }
 }
