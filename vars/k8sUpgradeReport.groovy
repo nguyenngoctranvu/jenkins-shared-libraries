@@ -24,7 +24,7 @@ def call(project, namespace, apiurl, bucket, reportsvr) {
     --set oaApi.Url=${apiurl} \
     --set bucket.Name=${bucket} \
     --set bucket.Key=${S3_KEY} \
-    --set bucket.Secret=${S3_SECRET} 
+    --set bucket.Secret=${S3_SECRET} \
     --set report.Server=${reportsvr} \
     --dry-run --debug
     """
