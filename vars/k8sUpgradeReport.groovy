@@ -15,7 +15,7 @@ def call(project, namespace, apiurl, bucket) {
     --set oaApi.authToken=${API_AUTH_TOKEN} \
     --set schedule.Hour=23,schedule.Minute=35 \
     --set oaApi.Url=${apiurl} \
-    --set bucket.Name=${bucket}
+    --set bucket.Name=${bucket} --dry-run --debug
     """
   }
 }
