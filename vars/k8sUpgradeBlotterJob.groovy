@@ -1,4 +1,4 @@
-def call(project, namespace, rabbithost) {
+def call(project, namespace, apiUrl, rabbithost) {
   withCredentials([
     string(
       credentialsId: 'oaApi.authToken',
@@ -13,7 +13,7 @@ def call(project, namespace, rabbithost) {
     -i -n ${namespace} --set image.tag=${currentBuild.displayName} \
     --set mongo.Url=${MONGO_URL},rabbit.Host=${rabbithost} \
     --set oaApi.authToken=${API_AUTH_TOKEN} \
-    --set oaApi.Url="https://oaapi-stag.sjmex.io" \
+    --set oaApi.Url=${apiUrl} \
     --dry-run --debug
     """
   }

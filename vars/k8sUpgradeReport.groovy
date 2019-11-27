@@ -1,4 +1,4 @@
-def call(project, namespace, apiurl, bucket, reportsvr) {
+def call(project, namespace, apiUrl, bucket, reportsvr) {
   withCredentials([
     string(
       credentialsId: 'oaApi.authToken',
@@ -21,7 +21,7 @@ def call(project, namespace, apiurl, bucket, reportsvr) {
     -i -n ${namespace} --set image.tag=${currentBuild.displayName} \
     --set mongo.Url=${MONGO_URL} \
     --set oaApi.authToken=${API_AUTH_TOKEN} \
-    --set oaApi.Url=${apiurl} \
+    --set oaApi.Url=${apiUrl} \
     --set bucket.Name=${bucket} \
     --set bucket.Key=${S3_KEY} \
     --set bucket.Secret=${S3_SECRET} \
