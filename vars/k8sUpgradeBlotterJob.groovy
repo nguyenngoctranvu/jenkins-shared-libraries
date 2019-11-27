@@ -9,11 +9,12 @@ def call(project, namespace, rabbithost) {
       variable: 'MONGO_URL'
     )
   ]) {
-    sh """helm upgrade ${project} helm/mc-daily-job \
+    sh """helm upgrade ${project} helm/blotter-job \
     -i -n ${namespace} --set image.tag=${currentBuild.displayName} \
     --set mongo.Url=${MONGO_URL},rabbit.Host=${rabbithost} \
     --set oaApi.authToken=${API_AUTH_TOKEN} \
-    --set oaApi.Url="https://oaapi-stag.sjmex.io"
+    --set oaApi.Url="https://oaapi-stag.sjmex.io" \
+    --dry-run --debug
     """
   }
 }
