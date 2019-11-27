@@ -4,11 +4,6 @@
     if (sudo) {
         prefix = "sudo "
     }
-    sh """${prefix}docker pull \
-        ${image}:${tag}"""
-    sh """${prefix}docker image tag \
-        ${image}:${tag} \
-        ${image}:latest-stag"""
     withCredentials([usernamePassword(
         credentialsId: "docker",
         usernameVariable: "USER",
@@ -16,6 +11,11 @@
     )]) {
         sh """${prefix}docker login \
         -u $USER -p $PASS https://hub.sjmex.io"""
+        sh """${prefix}docker pull \
+        ${image}:${tag}"""
+        sh """${prefix}docker image tag \
+        ${image}:${tag} \
+        ${image}:latest-stag"""
     }
     sh """${prefix}docker image push \
         ${image}:latest-stag"""
