@@ -8,7 +8,7 @@ def call(project, namespace,apiUrl, dbUrl) {
         -i -n ${namespace} \
         --set image.tag=${currentBuild.displayName} \
         --set ingress.host=${apiUrl} \
-        --set db.address=${dbUrl} \
+        --set db.address="${dbUrl}" \
         --set db.user=${USER} \
         --set db.password=${PASS} --dry-run --debug
         """
