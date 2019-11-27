@@ -13,8 +13,7 @@ def call(project, namespace, apiUrl, rabbithost) {
     -i -n ${namespace} --set image.tag=${currentBuild.displayName} \
     --set mongo.Url=${MONGO_URL},rabbit.Host=${rabbithost} \
     --set oaApi.authToken=${API_AUTH_TOKEN} \
-    --set oaApi.Url=${apiUrl} \
-    --dry-run --debug
+    --set oaApi.Url=${apiUrl} 
     """
   }
 }
