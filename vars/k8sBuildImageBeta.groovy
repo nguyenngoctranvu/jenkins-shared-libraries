@@ -5,7 +5,7 @@ def call(image, dockerFile, sudo = true) {
         prefix = "sudo "
     }
     sh """${prefix}docker image build \
-        -t ${image}:${tag} -f ${dockerFile} ."""
+        -t ${image}:${tag} -f ${dockerFile} --no-cache ."""
     withCredentials([usernamePassword(
         credentialsId: "docker",
         usernameVariable: "USER",
