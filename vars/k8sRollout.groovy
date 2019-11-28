@@ -1,5 +1,5 @@
-def call(project) {
-    sh """kubectl -n oa-stag \
+def call(project, namespace) {
+    sh """kubectl -n ${namespace} \
         rollout status deployment \
         ${project}-stag"""
 }
