@@ -10,7 +10,7 @@ def call(project, namespace, apiUrl, rabbithost) {
     ),
     usernamePassword(
       credentialsId: "BANK_API",
-      usernameVariable: "URL",
+      usernameVariable: "API_URL",
       passwordVariable: "AUTH_TOKEN"
     )
   ]) {
@@ -18,7 +18,7 @@ def call(project, namespace, apiUrl, rabbithost) {
     -i -n ${namespace} --set image.tag=${currentBuild.displayName} \
     --set mongo.Url=${MONGO_URL},rabbit.Host=${rabbithost} \
     --set oaApi.authToken=${API_AUTH_TOKEN} \
-    --set oaApi.Url=${apiUrl} --set bankApi.Url=${URL} --set bankApi.authToken=${AUTH_TOKEN}
+    --set oaApi.Url=${apiUrl} --set bankApi.Url=${API_URL} --set bankApi.authToken=${AUTH_TOKEN}
     """
   }
 }
