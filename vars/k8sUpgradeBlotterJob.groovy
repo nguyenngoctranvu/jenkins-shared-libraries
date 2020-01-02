@@ -1,12 +1,14 @@
 def call(project, namespace, apiUrl, rabbithost) {
   withCredentials([
-    string(
-      credentialsId: 'oaApi.authToken',
-      variable: 'API_AUTH_TOKEN'
+    usernamePassword(
+      credentialsId: "API_AUTH_TOKEN",
+      usernameVariable: "",
+      passwordVariable: "API_AUTH_TOKEN"
     ),
-    string(
-      credentialsId: 'mongo.Url',
-      variable: 'MONGO_URL'
+    usernamePassword(
+      credentialsId: "MONGO_URL",
+      usernameVariable: "",
+      passwordVariable: "MONGO_URL"
     )
   ]) {
     sh """helm upgrade ${project} helm/blotter-job \
