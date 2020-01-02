@@ -10,13 +10,10 @@ def call(project, namespace, apiUrl, bucket, reportsvr) {
       usernameVariable: "",
       passwordVariable: "MONGO_URL"
     ),
-    string(
-      credentialsId: 'S3.Key',
-      variable: 'S3_KEY'
-    ),
-    string(
-      credentialsId: 'S3.Secret',
-      variable: 'S3_SECRET'
+    usernamePassword(
+      credentialsId: "S3",
+      usernameVariable: "S3_KEY",
+      passwordVariable: "S3_SECRET"
     )
   ]) {
     sh """helm upgrade ${project} helm/reportingjob \
