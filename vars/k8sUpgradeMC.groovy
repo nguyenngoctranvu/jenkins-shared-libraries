@@ -1,4 +1,4 @@
-def call(project, namespace, feUrl) {
+def call(project, namespace, feUrl, env_mc) {
   withCredentials([
     usernamePassword(
       credentialsId: "SJMBT_GATEWAY_URL",
@@ -29,6 +29,7 @@ def call(project, namespace, feUrl) {
         --set cognito.web_client_id=${COGNITO_WEB_CLIENT_ID} \
         --set cognito.user_pool_id=${COGNITO_USER_POOL_ID} \
         --set cognito.region=${COGNITO_REGION} \
+        --set env=${env_mc}
         """
       }
 }
