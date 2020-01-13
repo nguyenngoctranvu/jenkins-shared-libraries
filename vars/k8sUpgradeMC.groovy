@@ -3,22 +3,22 @@ def call(project, namespace, feUrl) {
     usernamePassword(
       credentialsId: "SJMBT_GATEWAY_URL",
       usernameVariable: "SJMBT_GATEWAY_URL",
-      passwordVariable: ""
+      passwordVariable: "BLANK"
     ),
     usernamePassword(
       credentialsId: "COGNITO_WEB_CLIENT_ID",
-      usernameVariable: "",
+      usernameVariable: "BLANK",
       passwordVariable: "COGNITO_WEB_CLIENT_ID"
     ),
     usernamePassword(
       credentialsId: "COGNITO_USER_POOL_ID",
       usernameVariable: "COGNITO_USER_POOL_ID",
-      passwordVariable: ""
+      passwordVariable: "BLANK"
     ),
     usernamePassword(
       credentialsId: "COGNITO_REGION",
       usernameVariable: "COGNITO_REGION",
-      passwordVariable: ""
+      passwordVariable: "BLANK"
     )
   ]) {
         sh """helm upgrade ${project} helm/mc \
