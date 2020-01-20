@@ -1,12 +1,14 @@
 def call(item) {
     tag = "${currentBuild.displayName}"
     if ( item != "" ) {
-        JOB_BASE_NAME = item
+        SERVICE = item
+    } else {
+        SERVICE = ${JOB_BASE_NAME}
     }
     sh """docker-compose build \
         ${JOB_BASE_NAME}"""
 
-    sh """sudo docker tag ${JOB_BASE_NAME}_${JOB_BASE_NAME} \
+    sh """sudo docker tag ${JOB_BASE_NAME}_${SERVICE} \
         hub.sjmex.io/${JOB_BASE_NAME}:${tag}"""
 
     withCredentials([usernamePassword(
