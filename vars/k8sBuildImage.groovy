@@ -1,6 +1,8 @@
-def call() {
+def call(item) {
     tag = "${currentBuild.displayName}"
-
+    if ( item != "" ) {
+        JOB_BASE_NAME = item
+    }
     sh """docker-compose build \
         ${JOB_BASE_NAME}"""
 
