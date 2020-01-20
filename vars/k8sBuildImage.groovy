@@ -10,7 +10,7 @@ def call(item) {
         ${SERVICE}"""
 
     sh """sudo docker tag ${JOB_BASE_NAME}_${SERVICE} \
-        hub.sjmex.io/${JOB_BASE_NAME}:${tag}"""
+        hub.sjmex.io/${SERVICE}:${tag}"""
 
     withCredentials([usernamePassword(
         credentialsId: "docker",
@@ -21,5 +21,5 @@ def call(item) {
             -u $USER -p $PASS https://hub.sjmex.io"""
     }
     sh """sudo docker image push \
-        hub.sjmex.io/${JOB_BASE_NAME}:${tag}"""
+        hub.sjmex.io/${SERVICE}:${tag}"""
 }
