@@ -1,5 +1,5 @@
-def call(project, namespace) {
-    sh """kubectl -n ${namespace} \
+def call() {
+    sh """kubectl -n oa-${ENV} \
         rollout status deployment \
-        ${project}"""
+        ${JOB_BASE_NAME}-${ENV}"""
 }
