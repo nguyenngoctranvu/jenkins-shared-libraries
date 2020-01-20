@@ -7,7 +7,7 @@ def call(item) {
         SERVICE = "${item}"
     }
     sh """docker-compose build \
-        ${JOB_BASE_NAME}"""
+        ${SERVICE}"""
 
     sh """sudo docker tag ${JOB_BASE_NAME}_${SERVICE} \
         hub.sjmex.io/${JOB_BASE_NAME}:${tag}"""
