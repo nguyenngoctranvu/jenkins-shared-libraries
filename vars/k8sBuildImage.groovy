@@ -3,7 +3,7 @@ def call(item) {
     if ( item != "" ) {
         SERVICE = item
     } else {
-        SERVICE = ${JOB_BASE_NAME}
+        SERVICE = "${JOB_BASE_NAME}"
     }
     sh """docker-compose build \
         ${JOB_BASE_NAME}"""
