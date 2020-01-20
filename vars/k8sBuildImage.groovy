@@ -1,10 +1,10 @@
 def call(item) {
     tag = "${currentBuild.displayName}"
     sh """echo item:  ${item}"""
-    if ( "${item}" != "" ) {
-        SERVICE = item
-    } else {
+    if ( "${item}" == "" ) {
         SERVICE = "${JOB_BASE_NAME}"
+    } else {
+        SERVICE = "${item}"
     }
     sh """docker-compose build \
         ${JOB_BASE_NAME}"""
