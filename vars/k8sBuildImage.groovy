@@ -1,6 +1,6 @@
 def call(item) {
     tag = "${currentBuild.displayName}"
-    if ( item != "" ) {
+    if ( "${item}" != "" ) {
         SERVICE = item
     } else {
         SERVICE = "${JOB_BASE_NAME}"
