@@ -1,5 +1,6 @@
 def call(item) {
     tag = "${currentBuild.displayName}"
+    sh """echo item:  ${item}"""
     if ( "${item}" != "" ) {
         SERVICE = item
     } else {
