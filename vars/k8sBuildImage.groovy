@@ -1,7 +1,7 @@
 def call(item) {
     tag = "${currentBuild.displayName}"
-    sh """echo item:  ${item}"""
-    if ( "${item}" == "" ) {
+    sh """echo item: ${item}"""
+    if ( "${item}" == "null" ) {
         SERVICE = "${JOB_BASE_NAME}"
     } else {
         SERVICE = "${item}"
