@@ -36,7 +36,7 @@ def call(item) {
       passwordVariable: "COGNITO_WEB_CLIENT_ID"
     )
   ]) {
-    sh """helm upgrade ${SERVICE}-${ENV} helm/${SERVICE} \
+    sh """helm upgrade ${SERVICE} helm/${SERVICE} \
     -i -n mc-${ENV} \
     --set ingress.host=${GW_URL} \
     --set mongo.Url=${MONGO_URL} \

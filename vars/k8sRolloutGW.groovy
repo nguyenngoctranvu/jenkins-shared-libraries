@@ -6,5 +6,5 @@ if ( "${item}" == "null" ) {
 }
 sh """kubectl -n mc-${ENV} \
 rollout status deployment \
-${SERVICE}-${ENV}"""
+${SERVICE}"""
 }
