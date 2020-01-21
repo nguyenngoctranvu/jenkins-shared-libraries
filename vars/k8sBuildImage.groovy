@@ -6,8 +6,8 @@ def call(item) {
     } else {
         SERVICE = "${item}"
     }
-    sh """docker-compose build \
-        ${SERVICE} --parallel"""
+    sh """docker-compose build --parallel  \
+        ${SERVICE}"""
 
     sh """sudo docker tag ${JOB_BASE_NAME}_${SERVICE} \
         hub.sjmex.io/${SERVICE}:${tag}"""
