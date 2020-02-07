@@ -14,7 +14,7 @@ def call(item) {
     )
     ]) {
         sh """docker-compose build --parallel  \
-        --build-arg SJMBT_GATEWAY_URL=${SJMBT_GATEWAY_URL} \
+        --build-arg SJMBT_GATEWAY_URL=${GW_URL} \
         --build-arg COGNITO_WEB_CLIENT_ID=${COGNITO_WEB_CLIENT_ID} \
         --build-arg COGNITO_USER_POOL_ID=${COGNITO_USER_POOL_ID} \
         --build-arg COGNITO_REGION=${COGNITO_REGION} \
