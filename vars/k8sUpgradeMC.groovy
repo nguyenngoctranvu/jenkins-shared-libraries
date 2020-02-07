@@ -10,7 +10,7 @@ def call() {
     -i -n mc-${ENV} \
     --set ingress.host=${MC_URL} \
     --set env=${ENV} \
-    --set api.dl.url=${DL_URL} \
+    --set api.dl.url=${API_DL_URL} \
     --set image.tag=${currentBuild.displayName} \
     --set gateway.url=${GW_URL} \
     --set cognito.region=${COGNITO_REGION} \
