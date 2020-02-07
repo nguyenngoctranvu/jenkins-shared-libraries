@@ -44,7 +44,7 @@ def call(item) {
     sh """helm upgrade ${SERVICE} helm/${SERVICE} \
     -i -n mc-${ENV} \
     --set ingress.host.gw=${GW_URL} \
-    --set ingress.host.dl=${DL_URL} \
+    --set ingress.host.dl=${API_DL_URL} \
     --set mongo.Url=${MONGO_URL} \
     --set bankApi.Url=${BANK_API_URL} \
     --set bankApi.authToken=${BANK_API_AUTH_TOKEN} \
