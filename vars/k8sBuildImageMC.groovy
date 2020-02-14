@@ -25,6 +25,7 @@ def call(item) {
         --build-arg COGNITO_REGION=${COGNITO_REGION} \
         --build-arg API_DL_URL=${API_DL_URL} \
         --build-arg LOG_GROUP_NAME=${LOG_GROUP_NAME} \
+        --build-arg LOG_STREAM=${LOG_STREAM} \
         --build-arg LOG_REGION=${LOG_REGION} \
         --build-arg LOG_ACCESS_KEY=${LOG_ACCESS_KEY} \
         --build-arg LOG_SECRET_ACCESS_KEY=${LOG_SECRET_ACCESS_KEY} \
