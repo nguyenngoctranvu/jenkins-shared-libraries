@@ -11,6 +11,11 @@ def call(item) {
       credentialsId: "COGNITO_WEB_CLIENT_ID",
       usernameVariable: "BLANK",
       passwordVariable: "COGNITO_WEB_CLIENT_ID"
+    ),
+    usernamePassword(
+      credentialsId: "LOG_ACCESS_KEY",
+      usernameVariable: "LOG_ACCESS_KEY",
+      passwordVariable: "LOG_SECRET_ACCESS_KEY"
     )
     ]) {
         sh """docker-compose build --parallel  \
@@ -19,6 +24,10 @@ def call(item) {
         --build-arg COGNITO_USER_POOL_ID=${COGNITO_USER_POOL_ID} \
         --build-arg COGNITO_REGION=${COGNITO_REGION} \
         --build-arg API_DL_URL=${API_DL_URL} \
+        --build-arg LOG_GROUP_NAME=${LOG_GROUP_NAME} \
+        --build-arg LOG_REGION=${LOG_REGION} \
+        --build-arg LOG_ACCESS_KEY=${LOG_ACCESS_KEY} \
+        --build-arg LOG_SECRET_ACCESS_KEY=${LOG_SECRET_ACCESS_KEY} \
         ${SERVICE}"""
 
         sh """sudo docker tag ${JOB_BASE_NAME}_${SERVICE} \
