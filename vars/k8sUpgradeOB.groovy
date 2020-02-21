@@ -6,8 +6,9 @@ def call() {
       passwordVariable: "COGNITO_WEB_CLIENT_ID"
     )
   ]) {
-    sh """helm upgrade ${JOB_BASE_NAME} helm/${JOB_BASE_NAME} \
+    sh """helm upgrade ${JOB_BASE_NAME}-${ENV} helm/${JOB_BASE_NAME} \
     -i -n mc-${ENV} \
+    --set ingress.host.gw=${GW_URL} \
     --set ingress.host=${OB_URL} \
     --set image.tag=${currentBuild.displayName} \
     --set cognito.region=${COGNITO_REGION} \
