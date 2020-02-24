@@ -46,6 +46,7 @@ def call() {
     --set logger.Module=${JOB_BASE_NAME} \
     --set ingress.host.web=${OA_WEB_URL} \
     --set ingress.host.api=${OA_API_URL} \
+    --set ingress.host.sms-transfer=${SMS_TRANSFER_URL} \
     --set bucket.Name=${BUCKET_NAME} \
     --set bucket.Key=${S3_KEY} \
     --set bucket.Secret=${S3_SECRET} \
