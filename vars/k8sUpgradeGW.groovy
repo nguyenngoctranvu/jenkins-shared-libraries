@@ -55,7 +55,6 @@ def call(item) {
     -i -n mc-${ENV} \
     --set ingress.host.gw=${GW_URL} \
     --set ingress.host.dl=${API_DL_URL} \
-    --set mongo.Url=${MONGO_URL} \
     --set bankApi.Url=${BANK_API_URL} \
     --set oaApi.Url=${OA_API_URL} \
     --set aws.region=${AWS_REGION} \
