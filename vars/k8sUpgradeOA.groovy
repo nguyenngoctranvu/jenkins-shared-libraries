@@ -26,15 +26,20 @@ def call() {
       passwordVariable: "BANK_API_AUTH_TOKEN"
     )
   ]) {
+    sh """kubectl create secret generic ${JOB_BASE_NAME}-${ENV} \
+    --from-literal=OA_API_AUTH_TOKEN=${OA_API_AUTH_TOKEN} \
+    --from-literal=MONGO_URL=${MONGO_URL} \
+    --from-literal=MYSQL_PASS=${MYSQL_PASS} \
+    --from-literal=S3_SECRET=${S3_SECRET} \
+    --from-literal=BANK_API_AUTH_TOKEN=${BANK_API_AUTH_TOKEN} \
+    --dry-run -o yaml > helm/${JOB_BASE_NAME}/templates/${JOB_BASE_NAME}-${ENV}.yml
+    """
     sh """helm upgrade ${JOB_BASE_NAME}-${ENV} helm/${JOB_BASE_NAME} \
     -i -n oa-${ENV} \
     --set image.tag=${currentBuild.displayName} \
-    --set mongo.Url=${MONGO_URL} \
-    --set oaApi.authToken=${OA_API_AUTH_TOKEN} \
     --set oaApi.Url=${OA_API_URL} \
     --set oaWeb.Url=${OA_WEB_URL} \
     --set bankApi.Url=${BANK_API_URL} \
-    --set bankApi.authToken=${BANK_API_AUTH_TOKEN} \
     --set rabbit.Host=${RABBIT_HOST} \
     --set schedule.Hour=${SCHEDULE_HOUR} \
     --set schedule.Minute=${SCHEDULE_MINUTE} \
@@ -42,14 +47,12 @@ def call() {
     --set interest.Schedule_Minute=${INTEREST_SCHEDULE_MINUTE} \
     --set mysql.address=${MYSQL_ADDRESS} \
     --set mysql.user=${MYSQL_USER} \
-    --set mysql.password=${MYSQL_PASS} \
     --set logger.Module=${JOB_BASE_NAME} \
     --set ingress.host.web=${OA_WEB_URL} \
     --set ingress.host.api=${OA_API_URL} \
     --set ingress.host.smstransfer=${SMS_TRANSFER_URL} \
     --set bucket.Name=${BUCKET_NAME} \
     --set bucket.Key=${S3_KEY} \
-    --set bucket.Secret=${S3_SECRET} \
     --set report.Server=${REPORT_SERVER}
     """
   }
