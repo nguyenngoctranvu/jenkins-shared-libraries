@@ -41,7 +41,7 @@ def call(item) {
       passwordVariable: "SJMBT_EMAIL_AUTH_PASS"
     )
   ]) {
-    sh """kubectl create secret generic ${JOB_BASE_NAME}-${ENV} \
+    sh """kubectl create secret generic ${SERVICE} \
     --from-literal=OA_API_AUTH_TOKEN=${OA_API_AUTH_TOKEN} \
     --from-literal=MONGO_URL=${MONGO_URL} \
     --from-literal=BANK_API_AUTH_TOKEN=${BANK_API_AUTH_TOKEN} \
@@ -49,7 +49,7 @@ def call(item) {
     --from-literal=AWS_SECRET_KEY=${AWS_SECRET_KEY} \
     --from-literal=COGNITO_WEB_CLIENT_ID=${COGNITO_WEB_CLIENT_ID} \
     --from-literal=SJMBT_EMAIL_AUTH_PASS=${SJMBT_EMAIL_AUTH_PASS} \
-    --dry-run -o yaml > helm/${JOB_BASE_NAME}/templates/${JOB_BASE_NAME}-${ENV}.yml
+    --dry-run -o yaml > helm/${SERVICE}/templates/${SERVICE}.yml
     """
     sh """helm upgrade ${SERVICE} helm/${SERVICE} \
     -i -n mc-${ENV} \
