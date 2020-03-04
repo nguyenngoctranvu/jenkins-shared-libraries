@@ -30,6 +30,7 @@ def call(item) {
         --build-arg LOG_ACCESS_KEY=${LOG_ACCESS_KEY} \
         --build-arg LOG_SECRET_ACCESS_KEY=${LOG_SECRET_ACCESS_KEY} \
         --build-arg ONBOARDING_URL=${ONBOARDING_URL} \
+        --build-arg ENV=${ENV} \
         ${SERVICE}"""
 
         sh """sudo docker tag ${JOB_BASE_NAME}_${SERVICE} \
